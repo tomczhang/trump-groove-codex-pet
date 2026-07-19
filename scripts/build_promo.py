@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,6 +14,9 @@ ASSETS = ROOT / "assets"
 WIDTH, HEIGHT = 1600, 900
 FONT_REGULAR = "/System/Library/Fonts/Supplemental/Arial.ttf"
 FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+FRAME_INSET = 24
+FRAME_RADIUS = 64
+FRAME_FEATHER = 12
 
 
 def cover(image: Image.Image, size: tuple[int, int]) -> Image.Image:
@@ -59,6 +62,62 @@ def center_text(
         stroke_width=stroke_width,
         stroke_fill=stroke_fill,
     )
+
+
+def apply_premium_frame(image: Image.Image) -> Image.Image:
+    """Add a subtle highlight and a true transparent feathered round frame."""
+    framed = image.convert("RGBA")
+
+    glow = Image.new("RGBA", framed.size, (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+    glow_draw.rounded_rectangle(
+        (
+            FRAME_INSET + 4,
+            FRAME_INSET + 4,
+            WIDTH - FRAME_INSET - 5,
+            HEIGHT - FRAME_INSET - 5,
+        ),
+        radius=FRAME_RADIUS - 4,
+        outline=(112, 183, 255, 72),
+        width=4,
+    )
+    glow = glow.filter(ImageFilter.GaussianBlur(9))
+    framed = Image.alpha_composite(framed, glow)
+
+    highlight = Image.new("RGBA", framed.size, (0, 0, 0, 0))
+    ImageDraw.Draw(highlight).rounded_rectangle(
+        (
+            FRAME_INSET + 8,
+            FRAME_INSET + 8,
+            WIDTH - FRAME_INSET - 9,
+            HEIGHT - FRAME_INSET - 9,
+        ),
+        radius=FRAME_RADIUS - 8,
+        outline=(218, 235, 255, 96),
+        width=2,
+    )
+    framed = Image.alpha_composite(framed, highlight)
+
+    # Build the mask at 4× resolution so the curved edge remains smooth at README size.
+    antialias = 4
+    mask = Image.new("L", (WIDTH * antialias, HEIGHT * antialias), 0)
+    ImageDraw.Draw(mask).rounded_rectangle(
+        (
+            FRAME_INSET * antialias,
+            FRAME_INSET * antialias,
+            (WIDTH - FRAME_INSET - 1) * antialias,
+            (HEIGHT - FRAME_INSET - 1) * antialias,
+        ),
+        radius=FRAME_RADIUS * antialias,
+        fill=255,
+    )
+    mask = mask.filter(ImageFilter.GaussianBlur(FRAME_FEATHER * antialias))
+    mask = mask.resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+    mask_draw = ImageDraw.Draw(mask)
+    mask_draw.rectangle((0, 0, WIDTH - 1, HEIGHT - 1), outline=0, width=2)
+
+    framed.putalpha(ImageChops.multiply(framed.getchannel("A"), mask))
+    return framed
 
 
 def main() -> None:
@@ -157,8 +216,9 @@ def main() -> None:
         (221, 233, 255, 255),
     )
 
+    canvas = apply_premium_frame(canvas)
     output = ASSETS / "trump-groove-promo.png"
-    canvas.convert("RGB").save(output, optimize=True)
+    canvas.save(output, optimize=True)
     manifest = {
         "output": str(output.relative_to(ROOT)),
         "size": [WIDTH, HEIGHT],
@@ -174,8 +234,15 @@ def main() -> None:
         "subject_sources": [str(path.relative_to(ROOT)) for _, path, _ in cards],
         "subject_height": subject_height,
         "subject_baseline": baseline,
+        "frame": {
+            "corner_radius": FRAME_RADIUS,
+            "inset": FRAME_INSET,
+            "edge_feather": FRAME_FEATHER,
+            "inner_highlight_width": 2,
+            "format": "RGBA PNG",
+        },
         "background_source": "assets/source/promo-background.png",
-        "composition": "deterministic Pillow overlay; character pixels are not regenerated",
+        "composition": "deterministic Pillow overlay and transparent frame; character pixels are not regenerated",
     }
     (ASSETS / "promo-manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"

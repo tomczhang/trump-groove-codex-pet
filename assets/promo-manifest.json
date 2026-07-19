@@ -21,6 +21,13 @@
   ],
   "subject_height": 365,
   "subject_baseline": 790,
+  "frame": {
+    "corner_radius": 64,
+    "inset": 24,
+    "edge_feather": 12,
+    "inner_highlight_width": 2,
+    "format": "RGBA PNG"
+  },
   "background_source": "assets/source/promo-background.png",
-  "composition": "deterministic Pillow overlay; character pixels are not regenerated"
+  "composition": "deterministic Pillow overlay and transparent frame; character pixels are not regenerated"
 }
