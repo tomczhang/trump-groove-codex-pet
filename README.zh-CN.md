@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/trump-groove-promo.png" alt="Trump Groove 的得意站姿、点赞、摊手和 Trump Dance" width="100%" />
+</p>
+
 <h1 align="center">Trump Groove</h1>
 
 <p align="center">
@@ -10,7 +14,6 @@
 </p>
 
 <p align="center">
-  <a href="#预览">预览</a> •
   <a href="#特色">特色</a> •
   <a href="#安装">安装</a> •
   <a href="#仓库结构">仓库结构</a>
@@ -33,20 +36,6 @@
 
 ---
 
-## 预览
-
-<p align="center">
-  <img src="assets/trump-groove-promo.png" alt="Trump Groove 的得意站姿、点赞、摊手和 Trump Dance" width="100%" />
-</p>
-
-`running` 状态使用经过专门调节的六拍循环：
-
-```text
-动作 1 → 动作 2 → 动作 2 → 动作 1 → 动作 3 → 动作 3
-```
-
-重复关键动作形成停顿与释放，让双臂左右折叠的舞步更有律动，而不是机械地平均播放每一帧。
-
 ## 特色
 
 - **标志性 Trump Dance** — 手工调节双臂折叠舞步，作为活跃的 `running` 动画。
@@ -57,25 +46,35 @@
 
 ## 安装
 
-### 1. 克隆仓库
+### 方式一：让 Codex 自动安装（推荐）
+
+打开 Codex 并输入：
+
+```text
+Install this pet: npx codex-pets add trump-groove
+```
+
+Codex 会运行安装程序并自动完成 Trump Groove 的安装。
+
+### 方式二：克隆仓库后让 Codex 安装
+
+克隆此仓库：
 
 ```bash
 git clone https://github.com/tomczhang/trump-groove-codex-pet.git
 cd trump-groove-codex-pet
 ```
 
-使用 SSH 时也可以执行 `git clone git@github.com:tomczhang/trump-groove-codex-pet.git`。
+然后在 Codex 中打开克隆后的仓库并输入：
 
-### 2. 复制 Pet 资源
-
-```bash
-mkdir -p ~/.codex/pets/trump-groove
-cp pet.json spritesheet.webp ~/.codex/pets/trump-groove/
+```text
+帮我安装这个仓库中的 Trump Groove Pet。
 ```
 
-### 3. 启用 Trump Groove
+使用 SSH 时也可以执行 `git clone git@github.com:tomczhang/trump-groove-codex-pet.git`。
 
-打开 Codex 的 Pet 选择器并选择 **Trump Groove**。如果新 Pet 没有立即出现，可以先切换到其他 Pet 再切回来，或重启一次 Codex 以刷新本地 Pet 列表。
+> [!IMPORTANT]
+> 安装完成后必须重启 Codex，Trump Groove 才会生效。
 
 ## 仓库结构
 

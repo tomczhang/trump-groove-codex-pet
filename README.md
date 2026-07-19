@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/trump-groove-promo.png" alt="Trump Groove — Smirk, Thumbs Up, Shrug, and Trump Dance" width="100%" />
+</p>
+
 <h1 align="center">Trump Groove</h1>
 
 <p align="center">
@@ -10,7 +14,6 @@
 </p>
 
 <p align="center">
-  <a href="#preview">Preview</a> •
   <a href="#highlights">Highlights</a> •
   <a href="#install">Install</a> •
   <a href="#repository-layout">Repository Layout</a>
@@ -33,20 +36,6 @@
 
 ---
 
-## Preview
-
-<p align="center">
-  <img src="assets/trump-groove-promo.png" alt="Trump Groove — Smirk, Thumbs Up, Shrug, and Trump Dance" width="100%" />
-</p>
-
-The `running` state uses a deliberately tuned six-beat loop:
-
-```text
-pose 1 → pose 2 → pose 2 → pose 1 → pose 3 → pose 3
-```
-
-This gives the arm-folding dance a catchy hold-and-release rhythm instead of a mechanically even frame cadence.
-
 ## Highlights
 
 - **Signature Trump Dance** — a hand-tuned arm-folding groove used as the active `running` animation.
@@ -57,25 +46,35 @@ This gives the arm-folding dance a catchy hold-and-release rhythm instead of a m
 
 ## Install
 
-### 1. Clone the repository
+### Option 1 — Ask Codex to install it (Recommended)
+
+Open Codex and enter:
+
+```text
+Install this pet: npx codex-pets add trump-groove
+```
+
+Codex will run the installer and install Trump Groove for you.
+
+### Option 2 — Clone the repository and ask Codex
+
+Clone this repository:
 
 ```bash
 git clone https://github.com/tomczhang/trump-groove-codex-pet.git
 cd trump-groove-codex-pet
 ```
 
-SSH users can instead clone with `git@github.com:tomczhang/trump-groove-codex-pet.git`.
+Then open the cloned repository in Codex and ask:
 
-### 2. Copy the Pet resources
-
-```bash
-mkdir -p ~/.codex/pets/trump-groove
-cp pet.json spritesheet.webp ~/.codex/pets/trump-groove/
+```text
+Install the Trump Groove pet from this repository.
 ```
 
-### 3. Activate Trump Groove
+SSH users can instead clone with `git@github.com:tomczhang/trump-groove-codex-pet.git`.
 
-Open the Pet picker in Codex and select **Trump Groove**. If the new Pet does not appear immediately, switch to another Pet and back again, or restart Codex once to refresh the local Pet registry.
+> [!IMPORTANT]
+> Restart Codex after installation. Trump Groove will only take effect after Codex restarts.
 
 ## Repository Layout
 
