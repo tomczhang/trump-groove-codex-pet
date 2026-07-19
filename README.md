@@ -1,11 +1,19 @@
-<p align="center">
-  <img src="assets/trump-groove-promo.png" alt="Trump Groove — Smirk, Thumbs Up, Shrug, and Trump Dance" width="100%" />
-</p>
-
 <h1 align="center">Trump Groove</h1>
 
 <p align="center">
-  A high-energy Codex Pet with expressive reactions, meme energy, and a hypnotic six-beat Trump Dance.
+  <strong>A high-energy Codex Pet with expressive reactions and meme energy</strong><br/>
+  Expressive poses · Codex Pet V2 · Hypnotic six-beat Trump Dance
+</p>
+
+<p align="center">
+  English | <a href="README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
+  <a href="#preview">Preview</a> •
+  <a href="#highlights">Highlights</a> •
+  <a href="#install">Install</a> •
+  <a href="#repository-layout">Repository Layout</a>
 </p>
 
 <p align="center">
@@ -28,7 +36,7 @@
 ## Preview
 
 <p align="center">
-  <img src="assets/trump-dance.gif" alt="Trump Groove dance animation" width="360" />
+  <img src="assets/trump-groove-promo.png" alt="Trump Groove — Smirk, Thumbs Up, Shrug, and Trump Dance" width="100%" />
 </p>
 
 The `running` state uses a deliberately tuned six-beat loop:
@@ -69,27 +77,21 @@ cp pet.json spritesheet.webp ~/.codex/pets/trump-groove/
 
 Open the Pet picker in Codex and select **Trump Groove**. If the new Pet does not appear immediately, switch to another Pet and back again, or restart Codex once to refresh the local Pet registry.
 
-## Repository layout
+## Repository Layout
 
 ```text
 .
+├── README.md                   # English documentation
+├── README.zh-CN.md             # Simplified Chinese documentation
 ├── pet.json                    # Pet identity and V2 metadata
 ├── spritesheet.webp            # 8 × 11 Codex Pet V2 animation atlas
 ├── assets/
 │   ├── trump-groove-promo.png  # README promotional artwork
-│   ├── trump-dance.gif         # Running-state dance preview
+│   ├── trump-dance.gif         # Running-state dance preview source
 │   └── emotes/                 # Source poses used in the promo artwork
 └── scripts/
     └── build_promo.py          # Deterministic promo compositor
 ```
-
-## 中文说明
-
-**Trump Groove** 是一个带有“魔性律动”的 Codex Pet。它最突出的特点是 `running` 状态下的六拍 Trump Dance，通过重复关键动作形成更有节奏感的停顿与摆动。
-
-使用方法：把根目录中的 `pet.json` 和 `spritesheet.webp` 复制到 `~/.codex/pets/trump-groove/`，然后在 Codex 的 Pet 选择器中选择 **Trump Groove**。
-
-在线查看：[codex-pets.net/#/pets/trump-groove](https://codex-pets.net/#/pets/trump-groove)
 
 ## Disclaimer
 
