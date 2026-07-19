@@ -19,6 +19,8 @@
     "assets/emotes/shrug.png",
     "assets/emotes/trump-dance-pose.png"
   ],
+  "subject_height": 365,
+  "subject_baseline": 790,
   "background_source": "assets/source/promo-background.png",
   "composition": "deterministic Pillow overlay; character pixels are not regenerated"
 }

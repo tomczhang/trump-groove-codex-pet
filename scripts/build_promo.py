@@ -103,14 +103,15 @@ def main() -> None:
     )
 
     cards = [
-        ("SMIRK", ASSETS / "emotes" / "smirk.png", 365, 236),
-        ("THUMBS UP", ASSETS / "emotes" / "thumbs-up.png", 365, 608),
-        ("SHRUG", ASSETS / "emotes" / "shrug.png", 335, 990),
-        ("TRUMP DANCE", ASSETS / "emotes" / "trump-dance-pose.png", 405, 1360),
+        ("SMIRK", ASSETS / "emotes" / "smirk.png", 236),
+        ("THUMBS UP", ASSETS / "emotes" / "thumbs-up.png", 608),
+        ("SHRUG", ASSETS / "emotes" / "shrug.png", 990),
+        ("TRUMP DANCE", ASSETS / "emotes" / "trump-dance-pose.png", 1360),
     ]
+    subject_height = 365
     baseline = 790
 
-    for label, path, subject_height, center_x in cards:
+    for label, path, center_x in cards:
         subject = fit_subject(path, subject_height)
         x = round(center_x - subject.width / 2)
         y = baseline - subject.height
@@ -170,7 +171,9 @@ def main() -> None:
             "TRUMP DANCE",
             "codex-pets.net/#/pets/trump-groove",
         ],
-        "subject_sources": [str(path.relative_to(ROOT)) for _, path, _, _ in cards],
+        "subject_sources": [str(path.relative_to(ROOT)) for _, path, _ in cards],
+        "subject_height": subject_height,
+        "subject_baseline": baseline,
         "background_source": "assets/source/promo-background.png",
         "composition": "deterministic Pillow overlay; character pixels are not regenerated",
     }
