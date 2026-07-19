@@ -1,0 +1,24 @@
+{
+  "output": "assets/trump-groove-promo.png",
+  "size": [
+    1600,
+    900
+  ],
+  "exact_text": [
+    "TRUMP GROOVE",
+    "THE CODEX PET WITH MEME ENERGY",
+    "SMIRK",
+    "THUMBS UP",
+    "SHRUG",
+    "TRUMP DANCE",
+    "codex-pets.net/#/pets/trump-groove"
+  ],
+  "subject_sources": [
+    "assets/emotes/smirk.png",
+    "assets/emotes/thumbs-up.png",
+    "assets/emotes/shrug.png",
+    "assets/emotes/trump-dance-pose.png"
+  ],
+  "background_source": "assets/source/promo-background.png",
+  "composition": "deterministic Pillow overlay; character pixels are not regenerated"
+}
