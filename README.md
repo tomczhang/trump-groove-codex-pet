@@ -12,6 +12,19 @@
   <a href="https://codex-pets.net/#/pets/trump-groove"><strong>View Trump Groove on Codex Pets →</strong></a>
 </p>
 
+---
+
+## 🌟 Special Thanks
+
+<p align="center">
+  <a href="https://linux.do">
+    <img src="docs/images/linuxdo.png" alt="LINUX DO" width="420" />
+  </a>
+</p>
+<p align="center"><b>For all things AI, head to LINUX DO! Wishing the community ever greater success~</b></p>
+
+---
+
 ## Preview
 
 <p align="center">
